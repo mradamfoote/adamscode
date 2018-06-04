@@ -1,0 +1,7 @@
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\bin\Debug\AdamsBakery.exe.config
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\bin\Debug\AdamsBakery.exe
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\bin\Debug\AdamsBakery.pdb
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\obj\Debug\AdamsBakery.csprojAssemblyReference.cache
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\obj\Debug\AdamsBakery.csproj.CoreCompileInputs.cache
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\obj\Debug\AdamsBakery.exe
+C:\Users\mrada\OneDrive\UW\C Sharp Class\Class Project\AdamsBakery\AdamsBakery\obj\Debug\AdamsBakery.pdb
