@@ -19,13 +19,6 @@ namespace AdamsBakeryWithClass
 
     static class InventoryUtility   
     {
-        static int index;
-
-        static InventoryUtility()
-        {
-            index = 0;
-        }
-
         static void IsEmpty()
         {
             Console.WriteLine("Inventory is Empty.");
@@ -52,4 +45,17 @@ namespace AdamsBakeryWithClass
             }
         }
     }
+
+    public class Inventory
+    {
+        public int index;
+
+        public Inventory()
+        {
+            index = 0;
+        }
+
+        public BakeryItem[] items = new BakeryItem[100];
+    }
+
 }
