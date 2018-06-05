@@ -30,7 +30,6 @@ namespace AdamsBakeryWithClass
             bool run = true;
             //int index = 0;
             var bakery = new Inventory();
-            bakery.items
             //var inventoryUtility = new InventoryUtility();
             int index = 0;
             Console.WriteLine("Adam's Bakery");
@@ -56,7 +55,7 @@ namespace AdamsBakeryWithClass
                                 Console.WriteLine("Invalid Entry");
                                 goto case "n";
                             }
-                            bakery[index].type = bakedGood;
+                            bakery.items[index].type = bakedGood;
 
                             bool quantInput = true;
                             while (quantInput == true) //creates a loop that keeps asking for quantity until a valid entry is made
@@ -65,7 +64,7 @@ namespace AdamsBakeryWithClass
                                 string quantEntered = Console.ReadLine();
                                 if (int.TryParse(quantEntered, out int quant)) //check to make sure that quantity entered is a int.
                                 {
-                                    bakery[index].quantity = quant;
+                                    bakery.items[index].quantity = quant;
                                     quantInput = false;
                                 }
                                 else
@@ -82,7 +81,7 @@ namespace AdamsBakeryWithClass
                                 string costEnt = Console.ReadLine();
                                 if (double.TryParse(costEnt, out double inputCost))
                                 {
-                                    bakery[index].cost = inputCost;
+                                    bakery.items[index].cost = inputCost;
                                     costInput = false;
                                 }
                                 else
@@ -117,12 +116,10 @@ namespace AdamsBakeryWithClass
                     case "l":
                     case "L":
                         {
-                            if ( Inventory.index == 0)
+                            if ( bakery.index == 0)
                             {
-                                //Console.WriteLine("Inventory Empty\n");
-
-                                
-                            }
+                                bakery.isEmpty;
+\                           }
 
                             // Console.WriteLine("\nAdam's Bakery Inventory");
                             //Console.WriteLine("-----------------------");

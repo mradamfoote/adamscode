@@ -19,12 +19,7 @@ namespace AdamsBakeryWithClass
 
     static class InventoryUtility   
     {
-        static void IsEmpty()
-        {
-            Console.WriteLine("Inventory is Empty.");
-        }
-
-         
+        
         static void ListInventoryItem(BakeryItem bakeryItem)
         {
             //Console.WriteLine("\nAdam's Bakery Inventory");
@@ -53,6 +48,11 @@ namespace AdamsBakeryWithClass
         public Inventory()
         {
             index = 0;
+        }
+
+        public void isEmpty()
+        {
+            Console.WriteLine("Inventory Empty.");
         }
 
         public BakeryItem[] items = new BakeryItem[100];
