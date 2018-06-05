@@ -8,6 +8,7 @@ namespace AdamsBakeryWithClass
 {
     class Program
     {
+       /* 
         public struct Bakery
         {
             public string type;
@@ -18,6 +19,8 @@ namespace AdamsBakeryWithClass
             public double totalPrice;
             public int itemNumber;
         }
+        */
+
 
        
     
@@ -27,7 +30,7 @@ namespace AdamsBakeryWithClass
             bool run = true;
             //int index = 0;
             //var bakery = new Bakery[100];
-            //var inventory = new Inventory();
+            var inventory = new Inventory();
             int index = 0;
             Console.WriteLine("Adam's Bakery");
             Console.WriteLine("-------------");
@@ -113,10 +116,11 @@ namespace AdamsBakeryWithClass
                     case "l":
                     case "L":
                         {
-                            if (inventory.index == 0)
+                            if ( Inventory.index == 0)
                             {
                                 //Console.WriteLine("Inventory Empty\n");
-                                inventory.EmptyInventory();
+
+                                
                             }
 
                             // Console.WriteLine("\nAdam's Bakery Inventory");
@@ -127,7 +131,7 @@ namespace AdamsBakeryWithClass
                             //{
                             //  Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
                             //}
-                            inventory.InventoryList(bakery[inventory.index]);
+                            
                             break;
                         }
                     case "c":
