@@ -30,7 +30,7 @@ namespace AdamsBakeryWithClass
             bool run = true;
             //int index = 0;
             //var bakery = new Bakery[100];
-            var inventory = new Inventory();
+            var inventoryUtility = new InventoryUtility();
             int index = 0;
             Console.WriteLine("Adam's Bakery");
             Console.WriteLine("-------------");

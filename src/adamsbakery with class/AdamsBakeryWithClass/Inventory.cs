@@ -17,11 +17,11 @@ namespace AdamsBakeryWithClass
         public int itemNumber;
     }
 
-    static class Inventory
+    static class InventoryUtility   
     {
         static int index;
 
-        static Inventory()
+        static InventoryUtility()
         {
             index = 0;
         }
