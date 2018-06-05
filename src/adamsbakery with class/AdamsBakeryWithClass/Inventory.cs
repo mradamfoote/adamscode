@@ -17,26 +17,22 @@ namespace AdamsBakeryWithClass
         public int itemNumber;
     }
 
-    static class InventoryUtility   
+    public static class InventoryUtility   
     {
         
-        static void ListInventoryItem(BakeryItem bakeryItem)
+        public static void ListInventoryItem(BakeryItem bakeryItem)
         {
-            //Console.WriteLine("\nAdam's Bakery Inventory");
-            //Console.WriteLine("-----------------------");
-           // Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-           // Console.WriteLine("----------------------------------------------------------------------------------------------------");
             Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", bakeryItem.itemNumber, bakeryItem.type, bakeryItem.quantity, bakeryItem.cost, bakeryItem.salePrice, bakeryItem.totalCost, bakeryItem.totalPrice);
         }
-        static void ListInventroy(BakeryItem[] bakery)
+        public static void ListInventroy(BakeryItem[] bakery)
         {
             Console.WriteLine("\nAdam's Bakery Inventory");
             Console.WriteLine("-----------------------");
             Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
-            foreach(var item in bakery)
+            foreach(var items in bakery)
             {
-                ListInventoryItem(item);
+                ListInventoryItem(items);
             }
         }
     }
@@ -50,7 +46,7 @@ namespace AdamsBakeryWithClass
             index = 0;
         }
 
-        public void isEmpty()
+        public void IsEmpty()
         {
             Console.WriteLine("Inventory Empty.");
         }

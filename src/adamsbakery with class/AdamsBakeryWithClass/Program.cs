@@ -8,30 +8,11 @@ namespace AdamsBakeryWithClass
 {
     class Program
     {
-       /* 
-        public struct Bakery
-        {
-            public string type;
-            public double salePrice;
-            public int quantity;
-            public double cost;
-            public double totalCost;
-            public double totalPrice;
-            public int itemNumber;
-        }
-        */
-
-
-       
-    
-    
+  
         static void Main(string[] args)
         {
             bool run = true;
-            //int index = 0;
             var bakery = new Inventory();
-            //var inventoryUtility = new InventoryUtility();
-            int index = 0;
             Console.WriteLine("Adam's Bakery");
             Console.WriteLine("-------------");
 
@@ -55,7 +36,7 @@ namespace AdamsBakeryWithClass
                                 Console.WriteLine("Invalid Entry");
                                 goto case "n";
                             }
-                            bakery.items[index].type = bakedGood;
+                            bakery.items[bakery.index].type = bakedGood;
 
                             bool quantInput = true;
                             while (quantInput == true) //creates a loop that keeps asking for quantity until a valid entry is made
@@ -64,7 +45,7 @@ namespace AdamsBakeryWithClass
                                 string quantEntered = Console.ReadLine();
                                 if (int.TryParse(quantEntered, out int quant)) //check to make sure that quantity entered is a int.
                                 {
-                                    bakery.items[index].quantity = quant;
+                                    bakery.items[bakery.index].quantity = quant;
                                     quantInput = false;
                                 }
                                 else
@@ -81,7 +62,7 @@ namespace AdamsBakeryWithClass
                                 string costEnt = Console.ReadLine();
                                 if (double.TryParse(costEnt, out double inputCost))
                                 {
-                                    bakery.items[index].cost = inputCost;
+                                    bakery.items[bakery.index].cost = inputCost;
                                     costInput = false;
                                 }
                                 else
@@ -97,7 +78,7 @@ namespace AdamsBakeryWithClass
                                 string priceEnt = Console.ReadLine();
                                 if (double.TryParse(priceEnt, out double entPrice))
                                 {
-                                    bakery[index].salePrice = entPrice;
+                                    bakery.items[bakery.index].salePrice = entPrice;
                                     priceInput = false;
                                 }
                                 else
@@ -105,21 +86,22 @@ namespace AdamsBakeryWithClass
                                     Console.WriteLine("Invalid Entry.");
                                 }
                             }
-
-                            bakery[index].totalCost = bakery[index].cost * bakery[index].quantity;
-                            bakery[index].totalPrice = bakery[index].salePrice * bakery[index].quantity;
-                            index++;
-                            inventory.index++;
-                            index = 
+                            bakery.items[bakery.index].totalCost = bakery.items[bakery.index].cost * bakery.items[bakery.index].quantity;
+                            bakery.items[bakery.index].totalPrice = bakery.items[bakery.index].salePrice * bakery.items[bakery.index].quantity;
+                            bakery.items[bakery.index].itemNumber = bakery.index + 1;
+                            bakery.index++;
                             break;
                         }
                     case "l":
                     case "L":
                         {
-                            if ( bakery.index == 0)
+                            if (bakery.index == 0)
                             {
-                                bakery.isEmpty;
-\                           }
+                                bakery.IsEmpty();
+                                break;
+                            }
+                            InventoryUtility.ListInventroy(bakery.items);
+                            
 
                             // Console.WriteLine("\nAdam's Bakery Inventory");
                             //Console.WriteLine("-----------------------");
@@ -132,7 +114,7 @@ namespace AdamsBakeryWithClass
                             
                             break;
                         }
-                    case "c":
+                   /* case "c":
                     case "C":
                         {
                             if (index == 0)
@@ -206,11 +188,11 @@ namespace AdamsBakeryWithClass
                             }
                             break;
 
-                        }
+                        }*/
                     case "r":
                     case "R":
                         {
-                            if (index == 0)
+                            if (bakery.index == 0)
                             {
                                 Console.WriteLine("Inventory Empty.");
                                 break;
@@ -220,9 +202,9 @@ namespace AdamsBakeryWithClass
                             Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
                             Console.WriteLine("----------------------------------------------------------------------------------------------------");
 
-                            for (int i = 0; i < index; i++)
+                            for (int i = 0; i < bakery.index; i++)
                             {
-                                Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
+                                Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery.items[i].type, bakery.items[i].quantity, bakery.items[i].cost, bakery.items[i].salePrice, bakery.items[i].totalCost, bakery.items[i].totalPrice);
                             }
 
                             bool itemRemove = true;
@@ -233,23 +215,23 @@ namespace AdamsBakeryWithClass
                                 if (int.TryParse(toRemove, out int itemNumber))
                                 {
 
-                                    if (itemNumber < 1 || itemNumber > index + 1)
+                                    if (itemNumber < 1 || itemNumber > bakery.index + 1)
                                     {
                                         Console.WriteLine("Invalid Selection.");
                                         goto case "r";
                                     }
-                                    for (var i = itemNumber - 1; i < index; i++)
+                                    for (var i = itemNumber - 1; i < bakery.index; i++)
                                     {
-                                        bakery[i] = bakery[i + 1];
+                                        bakery.items[i] = bakery.items[i + 1];
                                     }
-                                    index--;
+                                    bakery.index--;
 
                                     Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
                                     Console.WriteLine("----------------------------------------------------------------------------------------------------");
 
-                                    for (int i = 0; i < index; i++)
+                                    for (int i = 0; i < bakery.index; i++)
                                     {
-                                        Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
+                                        Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery.items[i].type, bakery.items[i].quantity, bakery.items[i].cost, bakery.items[i].salePrice, bakery.items[i].totalCost, bakery.items[i].totalPrice);
                                     }
                                     itemRemove = false;
                                 }

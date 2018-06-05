@@ -1,0 +1,7 @@
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\obj\Debug\AdamsBakeryWithClass.csprojAssemblyReference.cache
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\obj\Debug\AdamsBakeryWithClass.csproj.CoreCompileInputs.cache
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\bin\Debug\AdamsBakeryWithClass.exe.config
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\bin\Debug\AdamsBakeryWithClass.exe
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\bin\Debug\AdamsBakeryWithClass.pdb
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\obj\Debug\AdamsBakeryWithClass.exe
+C:\Users\mrada\OneDrive\Documents\adamscode\src\adamsbakery with class\AdamsBakeryWithClass\obj\Debug\AdamsBakeryWithClass.pdb
