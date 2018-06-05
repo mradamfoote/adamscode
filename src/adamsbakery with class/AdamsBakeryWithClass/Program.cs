@@ -16,43 +16,18 @@ namespace AdamsBakeryWithClass
             public double cost;
             public double totalCost;
             public double totalPrice;
+            public int itemNumber;
         }
 
-        public class Inventory
-        {
-            public int index;
-            
-
-            public Inventory()
-            {
-                index = 0;
-                Array bakery = new Bakery[100];
-            }
-
-
-            public void EmptyInventory()
-            {
-                Console.WriteLine("Inventory is Empty.");
-            }
-
-            public void InventoryList(int index, Bakery)
-            {
-                Console.WriteLine("\nAdam's Bakery Inventory");
-                Console.WriteLine("-----------------------");
-                Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-                Console.WriteLine("----------------------------------------------------------------------------------------------------");
-                for (int i = 0; i < index; i++)
-                {
-                    Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
-                }
-            }
-        }
+       
+    
+    
         static void Main(string[] args)
         {
             bool run = true;
             //int index = 0;
             //var bakery = new Bakery[100];
-            var inventory = new Inventory();
+            //var inventory = new Inventory();
             int index = 0;
             Console.WriteLine("Adam's Bakery");
             Console.WriteLine("-------------");
@@ -132,6 +107,7 @@ namespace AdamsBakeryWithClass
                             bakery[index].totalPrice = bakery[index].salePrice * bakery[index].quantity;
                             index++;
                             inventory.index++;
+                            index = 
                             break;
                         }
                     case "l":
