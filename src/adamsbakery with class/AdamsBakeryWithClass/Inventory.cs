@@ -19,20 +19,32 @@ namespace AdamsBakeryWithClass
 
     public static class InventoryUtility   
     {
+        public static int Count;
+
+
+        static InventoryUtility()
+        {
+           Count = 0;
+        }
         
         public static void ListInventoryItem(BakeryItem bakeryItem)
         {
             Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", bakeryItem.itemNumber, bakeryItem.type, bakeryItem.quantity, bakeryItem.cost, bakeryItem.salePrice, bakeryItem.totalCost, bakeryItem.totalPrice);
         }
-        public static void ListInventroy(BakeryItem[] bakery)
+
+        public static void BakeryHeader()
         {
             Console.WriteLine("\nAdam's Bakery Inventory");
             Console.WriteLine("-----------------------");
             Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
             Console.WriteLine("----------------------------------------------------------------------------------------------------");
-            foreach(var items in bakery)
+        }
+        public static void ListInventroy(BakeryItem[] bakery)
+        {
+          
+            for(int i = 0; i < Count; i++)
             {
-                ListInventoryItem(items);
+                ListInventoryItem(bakery[i]);
             }
         }
     }

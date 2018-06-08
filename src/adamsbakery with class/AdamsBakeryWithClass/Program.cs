@@ -89,6 +89,7 @@ namespace AdamsBakeryWithClass
                             bakery.items[bakery.index].totalCost = bakery.items[bakery.index].cost * bakery.items[bakery.index].quantity;
                             bakery.items[bakery.index].totalPrice = bakery.items[bakery.index].salePrice * bakery.items[bakery.index].quantity;
                             bakery.items[bakery.index].itemNumber = bakery.index + 1;
+                            InventoryUtility.Count++;
                             bakery.index++;
                             break;
                         }
@@ -100,38 +101,21 @@ namespace AdamsBakeryWithClass
                                 bakery.IsEmpty();
                                 break;
                             }
+                            InventoryUtility.BakeryHeader();
                             InventoryUtility.ListInventroy(bakery.items);
-                            
-
-                            // Console.WriteLine("\nAdam's Bakery Inventory");
-                            //Console.WriteLine("-----------------------");
-                            //Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-                            //Console.WriteLine("----------------------------------------------------------------------------------------------------");
-                            //for(int i = 0; i < index; i++)
-                            //{
-                            //  Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
-                            //}
-                            
                             break;
                         }
-                   /* case "c":
+                    case "c":
                     case "C":
                         {
-                            if (index == 0)
+                            if (bakery.index == 0)
                             {
-                                Console.WriteLine("Inventory Empty\n");
+                                bakery.IsEmpty();
                                 break;
                             }
 
-                            Console.WriteLine("\nAdam's Bakery Inventory");
-                            Console.WriteLine("-----------------------");
-                            Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-                            Console.WriteLine("----------------------------------------------------------------------------------------------------");
-
-                            for (int i = 0; i < index; i++)
-                            {
-                                Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
-                            }
+                            InventoryUtility.BakeryHeader();
+                            InventoryUtility.ListInventroy(bakery.items);
 
                             bool changeItem = true;
                             while (changeItem == true)//loops until a valid entry is made
@@ -140,39 +124,45 @@ namespace AdamsBakeryWithClass
                                 string toAdd = Console.ReadLine();
                                 if (int.TryParse(toAdd, out int indexToChange))
                                 {
-                                    if (indexToChange > 0 && indexToChange - 1 < index)//checks to see if it is a valid choice
+                                    if (indexToChange > 0 && indexToChange - 1 < bakery.index)//checks to see if it is a valid choice
                                     {
                                         Console.Write("Enter ammount sold: ");
                                         string sold = Console.ReadLine();
-                                        int amountSold = int.Parse(sold);
-                                        if (amountSold > bakery[indexToChange - 1].quantity || amountSold < 0)
+                                        bool soldItem = true;
+                                        while (soldItem == true)
                                         {
-                                            Console.WriteLine("Unable\n");
-                                            goto case "c";
-                                        }
-                                        bakery[indexToChange - 1].quantity = bakery[indexToChange - 1].quantity - amountSold;
-                                        bakery[indexToChange - 1].totalCost = bakery[indexToChange - 1].cost * bakery[indexToChange - 1].quantity;
-                                        bakery[indexToChange - 1].totalPrice = bakery[indexToChange - 1].salePrice * bakery[indexToChange - 1].quantity;
-
-                                        if (bakery[indexToChange - 1].quantity < 1) //checks to see if inventory is empty
-                                        {
-                                            for (int i = indexToChange - 1; i < index; i++) //colapses the array when inventory empty
+                                            if (int.TryParse(sold, out int amountSold))
                                             {
-                                                bakery[i] = bakery[i + 1];
+                                                if (amountSold > bakery.items[indexToChange - 1].quantity || amountSold < 0)
+                                                {
+                                                    Console.WriteLine("Unable\n");
+                                                }
+                                                bakery.items[indexToChange - 1].quantity = bakery.items[indexToChange - 1].quantity - amountSold;
+                                                bakery.items[indexToChange - 1].totalCost = bakery.items[indexToChange - 1].cost * bakery.items[indexToChange - 1].quantity;
+                                                bakery.items[indexToChange - 1].totalPrice = bakery.items[indexToChange - 1].salePrice * bakery.items[indexToChange - 1].quantity;
 
+                                                if (bakery.items[indexToChange - 1].quantity < 1) //checks to see if inventory is empty
+                                                {
+                                                    for (int i = indexToChange - 1; i < bakery.index; i++) //colapses the array when inventory empty
+                                                    {
+                                                        bakery.items[i] = bakery.items[i + 1];
+
+                                                    }
+                                                    bakery.index--;
+                                                    InventoryUtility.Count--;
+                                                   
+                                                }
+                                                soldItem = false;
                                             }
-                                            index--;
+                                            else
+                                            {
+                                                Console.WriteLine("Invalid Entry.");
+                                            }
                                         }
 
-                                        Console.WriteLine("\nIndex     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-                                        Console.WriteLine("------------------------------------------------------------------------------------------------------");
-
-                                        for (int i = 0; i < index; i++)
-                                        {
-                                            Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery[i].type, bakery[i].quantity, bakery[i].cost, bakery[i].salePrice, bakery[i].totalCost, bakery[i].totalPrice);
-                                        }
+                                        InventoryUtility.BakeryHeader();
+                                        InventoryUtility.ListInventoryItem(bakery.items[indexToChange-1]);
                                     }
-
                                     else
                                     {
                                         Console.WriteLine("Invalid Entry.");
@@ -188,7 +178,7 @@ namespace AdamsBakeryWithClass
                             }
                             break;
 
-                        }*/
+                        }
                     case "r":
                     case "R":
                         {
@@ -197,15 +187,10 @@ namespace AdamsBakeryWithClass
                                 Console.WriteLine("Inventory Empty.");
                                 break;
                             }
-                            Console.WriteLine("Adam's Bakery Inventory");
-                            Console.WriteLine("-----------------------");
-                            Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-                            Console.WriteLine("----------------------------------------------------------------------------------------------------");
+                            InventoryUtility.BakeryHeader();
+                            InventoryUtility.ListInventroy(bakery.items);
 
-                            for (int i = 0; i < bakery.index; i++)
-                            {
-                                Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery.items[i].type, bakery.items[i].quantity, bakery.items[i].cost, bakery.items[i].salePrice, bakery.items[i].totalCost, bakery.items[i].totalPrice);
-                            }
+                        
 
                             bool itemRemove = true;
                             while (itemRemove == true)
@@ -225,14 +210,9 @@ namespace AdamsBakeryWithClass
                                         bakery.items[i] = bakery.items[i + 1];
                                     }
                                     bakery.index--;
-
-                                    Console.WriteLine("Index     Item                Quantity     Cost     Sales Price     Total Cost     Total Sales Price");
-                                    Console.WriteLine("----------------------------------------------------------------------------------------------------");
-
-                                    for (int i = 0; i < bakery.index; i++)
-                                    {
-                                        Console.WriteLine("{0,-10}{1, -20}{2, 8}{3, 9:c}{4, 16:c}{5, 15:c}{6, 22:c}", i + 1, bakery.items[i].type, bakery.items[i].quantity, bakery.items[i].cost, bakery.items[i].salePrice, bakery.items[i].totalCost, bakery.items[i].totalPrice);
-                                    }
+                                    InventoryUtility.Count--;
+                                    InventoryUtility.BakeryHeader();
+                                    InventoryUtility.ListInventroy(bakery.items);
                                     itemRemove = false;
                                 }
                                 else
