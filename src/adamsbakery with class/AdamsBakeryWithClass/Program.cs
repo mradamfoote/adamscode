@@ -31,12 +31,26 @@ namespace AdamsBakeryWithClass
                             Console.Write("Enter New Baked Good: ");
                             string bakedGood = Console.ReadLine();
                             int goodLength = bakedGood.Length;
-                            if (goodLength > 20)  //checks to make sure that the bake good name will fit in the output display and if not prompts you to enter a new name
+                            bool nameEnter = true;
+                            while (nameEnter == true)
                             {
-                                Console.WriteLine("Invalid Entry");
-                                goto case "n";
+                                if (int.TryParse(bakedGood, out int badName))
+                                {
+                                    Console.WriteLine("Invalid Entry.");
+                                    goto case "n";
+                                }
+                                else
+                                {
+                                    if (goodLength > 20)  //checks to make sure that the bake good name will fit in the output display and if not prompts you to enter a new name
+                                    {
+                                        Console.WriteLine("Invalid Entry");
+                                        goto case "n";
+                                        
+                                    }
+                                    bakery.items[bakery.index].type = bakedGood;
+                                    nameEnter = false;
+                                }
                             }
-                            bakery.items[bakery.index].type = bakedGood;
 
                             bool quantInput = true;
                             while (quantInput == true) //creates a loop that keeps asking for quantity until a valid entry is made
@@ -203,11 +217,12 @@ namespace AdamsBakeryWithClass
                                     if (itemNumber < 1 || itemNumber > bakery.index + 1)
                                     {
                                         Console.WriteLine("Invalid Selection.");
-                                        goto case "r";
+                                        
                                     }
                                     for (var i = itemNumber - 1; i < bakery.index; i++)
                                     {
                                         bakery.items[i] = bakery.items[i + 1];
+                                        bakery.items[i].itemNumber--;
                                     }
                                     bakery.index--;
                                     InventoryUtility.Count--;
